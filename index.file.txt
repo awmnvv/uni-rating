@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rate PMAS Sub Campus Attock</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000000;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .stars {
+      font-size: 50px;
+      cursor: pointer;
+    }
+
+    .star {
+      color: #555;
+      transition: color 0.3s;
+    }
+
+    .star.gold {
+      color: gold;
+    }
+
+    #thankYou {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #4caf50;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Rate PMAS Sub Campus Attock</h1>
+    <div class="stars" id="starContainer">
+      <span class="star" data-value="1">&#9734;</span>
+      <span class="star" data-value="2">&#9734;</span>
+      <span class="star" data-value="3">&#9734;</span>
+      <span class="star" data-value="4">&#9734;</span>
+      <span class="star" data-value="5">&#9734;</span>
+    </div>
+    <p id="thankYou" class="hidden">Thank you for your rating!</p>
+  </div>
+
+  <script>
+    const stars = document.querySelectorAll('.star');
+    const thankYou = document.getElementById('thankYou');
+
+    stars.forEach((star) => {
+      star.addEventListener('click', () => {
+        const rating = star.getAttribute('data-value');
+        highlightStars(rating);
+        thankYou.classList.remove('hidden');
+        console.log(`User rated: ${rating} star(s)`);
+      });
+    });
+
+    function highlightStars(rating) {
+      stars.forEach((star) => {
+        if (star.getAttribute('data-value') <= rating) {
+          star.classList.add('gold');
+        } else {
+          star.classList.remove('gold');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
